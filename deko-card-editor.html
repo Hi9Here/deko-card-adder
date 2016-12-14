@@ -1,0 +1,46 @@
+<link rel="import" href="../paper-dialog/paper-dialog.html">
+<link rel="import" href="../paper-dialog-scrollable/paper-dialog-scrollable.html">
+<link rel="import" href="../paper-button-group/paper-button-group.html">
+<link rel="import" href="../paper-button/paper-button.html">
+<link rel="import" href="../iron-icon/iron-icon.html">
+<link rel="import" href="../input-image/input-image.html">
+<!--
+  `<deko-card-editor></deko-card-editor>` deko-card-editor
+  @demo demo.html
+-->
+<dom-module id="deko-card-editor">
+  <template>
+    <style>:host {display:inline-block;background: white}</style>
+    <paper-dialog id="dialog" modal >
+      <paper-dialog-scrollable>
+        <paper-button-group selected="{{useTemplate}}">
+          <template is="dom-repeat" items="{{objectToArray(theTemplates)}}">
+            <paper-button name="{{item.$key}}" raised><iron-icon icon="{{item.icon}}"></iron-icon></paper-button>
+          </template>
+        </paper-button-group>
+        <div id="cardInputs" inner-h-t-m-l="[[inputFrom]]"></div>
+      </paper-dialog-scrollable>
+      <div class="buttons">
+        <paper-button on-tap="delete" style="color: #333;">Delete</paper-button>
+        <paper-button dialog-dismiss>Cancel</paper-button>
+        <paper-button on-tap="save" raised style="background: #ff4081; color: #fff;">Save</paper-button>
+      </div>
+    </paper-dialog>
+    <paper-button on-tap="open"> open </paper-button>
+    
+  </template>
+</dom-module>
+<script>
+  Polymer({
+    is: "deko-card-editor",
+    properties:{
+      card:{
+        type:Object,
+        notify:true,
+      },
+    },
+    open: function(undefined){
+      this.$.dialog.open()
+    },
+  })
+</script>
