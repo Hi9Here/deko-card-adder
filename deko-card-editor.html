@@ -151,7 +151,10 @@
         this.fire('close', detail, { bubbles: false })
         this.$.dialog.close()
       },
-      open: function() {
+      open: function(card) {
+        if (card) {
+          this.card = card
+        }
         this.$.dialog.open()
       },
       objectToArray: function(data) { //rewrite as .map
