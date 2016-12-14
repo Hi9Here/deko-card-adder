@@ -1,17 +1,27 @@
-<link rel="import" href="../paper-dialog/paper-dialog.html">
 <link rel="import" href="../paper-dialog-scrollable/paper-dialog-scrollable.html">
+<link rel="import" href="../card-info-link-input/card-info-link-input.html">
 <link rel="import" href="../paper-button-group/paper-button-group.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../paper-input/paper-textarea.html">
 <link rel="import" href="../paper-button/paper-button.html">
-<link rel="import" href="../iron-icon/iron-icon.html">
+<link rel="import" href="../paper-input/paper-input.html">
 <link rel="import" href="../input-image/input-image.html">
-<!--
-  `<deko-card-editor></deko-card-editor>` deko-card-editor
-  @demo demo.html
--->
+<link rel="import" href="../paper-styles/color.html">
 <dom-module id="deko-card-editor">
   <template>
-    <style>:host {display:inline-block;background: white}</style>
-    <paper-dialog id="dialog" modal >
+    <style>
+      #cardInputs {
+        margin: 15px
+      }
+      .templateButtons {
+        text-align: center;
+        margin-top: 40px;
+      }
+      paper-button-group {
+        margin: 15px
+      }
+    </style>
+    <paper-dialog id="dialog" modal>
       <paper-dialog-scrollable>
         <paper-button-group selected="{{useTemplate}}">
           <template is="dom-repeat" items="{{objectToArray(theTemplates)}}">
@@ -23,24 +33,140 @@
       <div class="buttons">
         <paper-button on-tap="delete" style="color: #333;">Delete</paper-button>
         <paper-button dialog-dismiss>Cancel</paper-button>
-        <paper-button on-tap="save" raised style="background: #ff4081; color: #fff;">Save</paper-button>
+        <paper-button on-tap="save"  raised style="background: #ff4081; color: #fff;">Save</paper-button>
       </div>
     </paper-dialog>
-    <paper-button on-tap="open"> open </paper-button>
-    
   </template>
-</dom-module>
-<script>
-  Polymer({
-    is: "deko-card-editor",
-    properties:{
-      card:{
-        type:Object,
-        notify:true,
+  <script>
+    Polymer({
+      is: 'deko-card-editor',
+      properties: {
+        card: {
+          type: Object,
+          notify: true,
+          value: {}
+        },
+        inputFrom:{
+          computed: ("getInputFrom(theTemplate)")
+        },
+        updateValues: {
+          computed: ("getUpdateValues(card.*)")
+        },
+        usedTemplate: {
+          computed: "getUsedTemplate(theTemplates, card)"
+        },
+        useTemplate: {
+          value:""
+        },
+        theTemplates: {
+          value:{
+            qa:{
+              output: "<paper-toolbar><span class=\"title\" title><\/span><img style=\"border-radius:45px\" src=\"{{userPic}}\" title=\"{{userName}}\" \/><\/paper-toolbar><h1>{{Question}}<\/h1><br \/><h1>{{Answer}}<\/h1>",
+              input: "<paper-textarea label=\"Question\" char-counter maxlength=\"100\"><\/paper-textarea>\r\n<paper-textarea label=\"Answer\" char-counter maxlength=\"100\"><\/paper-textarea>",
+              icon: "question-answer",
+            },
+            link: {
+              output: "<paper-toolbar><span class=\"title\" title><\/span><img style=\"border-radius:45px\" src=\"{{userPic}}\" title=\"{{userName}}\" \/><\/paper-toolbar><a title=\"{{Title}}\" href=\"{{Url}}\">{{Title}}<\/a>",
+              input: "<card-info-link-input label=\"Link\"><\/card-info-link-input>", 
+              icon: "bookmark",
+            },
+            event: {
+              output: "<paper-toolbar><span class=\"title\" title><\/span><img style=\"border-radius:45px\" src=\"{{userPic}}\" title=\"{{userName}}\" \/><\/paper-toolbar><a title=\"{{Title}}\" href=\"{{Url}}\">{{Event}}<\/a>",
+              input: "<paper-input label=\"Event\" char-counter maxlength=\"100\"><\/paper-input>\r\n<paper-input label=\"Url\" char-counter maxlength=\"100\"><\/paper-input>",
+              icon: "event",
+            },
+            shopping: {
+              output: "<paper-toolbar class=\"medium\"><iron-icon icon=\"shopping-cart\"><\/iron-icon><div class=\"title\"><\/div><img src=\"{{userPic}}\" \/><\/paper-toolbar><img width=\"100%\" src=\"{{ImageUrl}}\" \/><h1>{{Title}}<\/h1><h2>{{Subtitle}}<\/h2><h3>{{Cost}}<\/h3><h4>{{Company}}<\/h4>",
+              input: "<paper-input label=\"Link\"><\/paper-input>\r\n<input-image label=\"ImageUrl\" width=\"250\" max-height=\"100\" ><\/input-image><paper-input label=\"Title\"><\/paper-input><paper-input label=\"Subtitle\"><\/paper-input>\r\n<paper-input label=\"Cost\" type=\"number\" ><div perfix>\u00A3<\/div><\/paper-input>\r\n<paper-input label=\"Company\"><\/paper-input>",
+              icon: "shopping-cart",
+            },
+            booking: {
+              output: "<paper-toolbar><span class=\"title\" title><\/span><img style=\"border-radius:45px\" src=\"{{userPic}}\" title=\"{{userName}}\" \/><\/paper-toolbar><a title=\"{{Title}}\" href=\"{{Url}}\">{{Title}}<\/a>",
+              input: "<paper-input label=\"Hotel\" char-counter maxlength=\"100\"><\/paper-input>\r\n<paper-input label=\"Url\" char-counter maxlength=\"100\"><\/paper-input>",
+              icon: "assignment",
+            }
+          }
+        },
+        theTemplate: {
+          computed: "setTemplate(useTemplate, usedTemplate, theTemplates, card)"
+        }
       },
-    },
-    open: function(undefined){
-      this.$.dialog.open()
-    },
-  })
-</script>
+      getInputFrom: function(form) {
+        this.async(this.getUpdateValues, 100) // let it load
+        return form
+      },
+      getUsedTemplate: function(theTemplates, card) {
+         return this.objectToArray(theTemplates).reduce(function(previousValue, currentValue){
+            if (currentValue.output == card.output) {
+              return currentValue["$key"]
+            } else {
+              return previousValue
+            }
+          }, "")
+      },
+      setTemplate: function(useTemplate, usedTemplate, theTemplates, card) {
+        if (useTemplate) {
+          this.card.output = theTemplates[useTemplate].output
+          return this.card.input = theTemplates[useTemplate].input
+        } else if (card.output) {
+          if (usedTemplate) {
+            this.useTemplate = usedTemplate
+          }
+          return this.card.input
+        }
+      },
+      getUpdateValues: function(card) {
+        if (card) {
+          this.async(this.getUpdateValues, 100) // let it load
+        } else {
+          var inputForm = this.$$("#cardInputs")
+          var items = inputForm.querySelectorAll("[label]")
+          for (var i=0, max=items.length; i < max; i++) {
+            items[i].value = this.card[items[i].label]
+          }
+          return "Done"
+        }
+      },
+      save: function() {
+        var inputForm = this.$$("#cardInputs")
+        var items = inputForm.querySelectorAll("[label]")
+        for (var i=0, max=items.length; i < max; i++) {
+          this.card[items[i].label] = items[i].value
+        }
+        this.close('save')
+      },
+      delete: function() {
+        this.close('delete')
+      },
+      close: function(detail) {
+        var inputForm = this.$$("#cardInputs")
+        var items = inputForm.querySelectorAll("[label]")
+        for (var i=0, max=items.length; i < max; i++) {
+          this.card[items[i].label] = items[i].value
+        }
+        if (this.__editedCardElement) {
+          this.__editedCardElement.style.opacity = 1
+          this.__editedCardElement = null
+        }
+        this.fire('close', detail, { bubbles: false })
+        this.$.dialog.close()
+      },
+      open: function() {
+        this.$.dialog.open()
+      },
+      objectToArray: function(data) { //rewrite as .map
+        var output = []
+        if (data) {
+          var keys = Object.keys(data)
+          for (var i = 0; i < keys.length; i++) {
+            if (typeof data[keys[i]] === 'object') {
+              data[keys[i]]["$key"] = keys[i]
+              output.push(data[keys[i]])
+            }
+          }
+        }
+        return output
+      }
+    })
+  </script>
+</dom-module>
