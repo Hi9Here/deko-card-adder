@@ -61,14 +61,9 @@
         },
         theTemplates: {
           value:{
-            qa:{
-              output: "<paper-toolbar><span class=\"title\" title><\/span><img style=\"border-radius:45px\" src=\"{{userPic}}\" title=\"{{userName}}\" \/><\/paper-toolbar><h1>{{Question}}<\/h1><br \/><h1>{{Answer}}<\/h1>",
-              input: "<paper-textarea label=\"Question\" char-counter maxlength=\"100\"><\/paper-textarea>\r\n<paper-textarea label=\"Answer\" char-counter maxlength=\"100\"><\/paper-textarea>",
-              icon: "question-answer",
-            },
             link: {
               output: "<paper-toolbar><span class=\"title\" title><\/span><img style=\"border-radius:45px\" src=\"{{userPic}}\" title=\"{{userName}}\" \/><\/paper-toolbar><a title=\"{{Title}}\" href=\"{{Url}}\">{{Title}}<\/a>",
-              input: "<card-info-link-input label=\"Link\"><\/card-info-link-input>", 
+              input: "<paper-input label=\"link\"><\/paper-input>\r\n<input-image label=\"ImageUrl\" width=\"250\" max-height=\"100\" ><\/input-image><paper-input label=\"title\"><\/paper-input><paper-input label=\"desc\"><\/paper-input>", 
               icon: "bookmark",
             },
             event: {
@@ -85,7 +80,7 @@
               output: "<paper-toolbar><span class=\"title\" title><\/span><img style=\"border-radius:45px\" src=\"{{userPic}}\" title=\"{{userName}}\" \/><\/paper-toolbar><a title=\"{{Title}}\" href=\"{{Url}}\">{{Title}}<\/a>",
               input: "<paper-input label=\"Hotel\" char-counter maxlength=\"100\"><\/paper-input>\r\n<paper-input label=\"Url\" char-counter maxlength=\"100\"><\/paper-input>",
               icon: "assignment",
-            }
+            },
           }
         },
         theTemplate: {
