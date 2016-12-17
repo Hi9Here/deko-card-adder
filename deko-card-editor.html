@@ -149,9 +149,9 @@
         if (card) {
           this.card = card
         }
-        if (this.card.cardIcon) {
-          this.card.image = this.card.cardIcon + ""
-          delete(this.card.cardIcon)
+        if (this.card.cardicon) {
+          this.card.image = this.card.cardicon + ""
+          delete(this.card.cardicon)
         }
         this.$.dialog.open()
       },
