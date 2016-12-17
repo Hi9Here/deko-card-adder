@@ -62,7 +62,7 @@
         theTemplates: {
           value:{
             link: {
-              input: "<paper-input label=\"link\"><\/paper-input>\r\n<input-image label=\"image\" width=\"100\" max-height=\"100\" ><\/input-image><paper-input label=\"title\"><\/paper-input><paper-input label=\"desc\"><\/paper-input>", 
+              input: "<paper-input label=\"link\"><\/paper-input>\r\n<input-image label=\"image\" width=\"100\" max-height=\"100\" ><\/input-image><input-image label=\"cardIcon\" width=\"100\" max-height=\"100\" ><\/input-image><paper-input label=\"title\"><\/paper-input><paper-input label=\"desc\"><\/paper-input>", 
               icon: "bookmark",
             },
             event: {
@@ -91,12 +91,12 @@
       },
       getUsedTemplate: function(theTemplates, card) {
          return this.objectToArray(theTemplates).reduce(function(previousValue, currentValue){
-            if (currentValue.output == card.output) {
-              return currentValue["$key"]
-            } else {
-              return previousValue
-            }
-          }, "")
+           if (currentValue.output == card.output) {
+             return currentValue["$key"]
+           } else {
+             return previousValue
+           }
+         }, "")
       },
       setTemplate: function(useTemplate, usedTemplate, theTemplates, card) {
         if (useTemplate) {
