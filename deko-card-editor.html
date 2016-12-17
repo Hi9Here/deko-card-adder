@@ -66,12 +66,11 @@
               icon: "bookmark",
             },
             event: {
-              output: "<paper-toolbar><span class=\"title\" title><\/span><img style=\"border-radius:45px\" src=\"{{userPic}}\" title=\"{{userName}}\" \/><\/paper-toolbar><a title=\"{{Title}}\" href=\"{{Url}}\">{{Event}}<\/a>",
               input: "<paper-input label=\"Event\" char-counter maxlength=\"100\"><\/paper-input>\r\n<paper-input label=\"Url\" char-counter maxlength=\"100\"><\/paper-input>",
               icon: "event",
             },
             shopping: {
-              output: "<paper-toolbar class=\"medium\"><iron-icon icon=\"shopping-cart\"><\/iron-icon><div class=\"title\"><\/div><img src=\"{{userPic}}\" \/><\/paper-toolbar><img width=\"100%\" src=\"{{ImageUrl}}\" \/><h1>{{Title}}<\/h1><h2>{{Subtitle}}<\/h2><h3>{{Cost}}<\/h3><h4>{{Company}}<\/h4>",
+              outputType: "shopping-card",
               input: "<paper-input label=\"Link\"><\/paper-input>\r\n<input-image label=\"ImageUrl\" width=\"250\" max-height=\"100\" ><\/input-image><paper-input label=\"Title\"><\/paper-input><paper-input label=\"Subtitle\"><\/paper-input>\r\n<paper-input label=\"Cost\" type=\"number\" ><div perfix>\u00A3<\/div><\/paper-input>\r\n<paper-input label=\"Company\"><\/paper-input>",
               icon: "shopping-cart",
             },
