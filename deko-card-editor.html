@@ -19,7 +19,7 @@
         margin-top: 40px;
       }
       paper-button-group {
-        margin: 15px
+        margin: 15px;
       }
       paper-fab {
         position: fixed;
@@ -40,7 +40,7 @@
       <div class="buttons">
         <paper-button on-tap="delete" style="color: #333;">Delete</paper-button>
         <paper-button dialog-dismiss>Cancel</paper-button>
-        <paper-button on-tap="save"  raised style="background: #ff4081; color: #fff;">Save</paper-button>
+        <paper-button on-tap="save" raised style="background: #ff4081; color: #fff;">Save</paper-button>
       </div>
     </paper-dialog>
   </template>
@@ -70,6 +70,7 @@
             link: {
               input: "<paper-input label=\"link\"><\/paper-input>\r\n<input-image label=\"image\" width=\"100\" max-height=\"100\" ><\/input-image><paper-input label=\"title\"><\/paper-input><paper-input label=\"desc\"><\/paper-input>", 
               icon: "bookmark",
+              cardType: "link-display",
             },
           }
         },
@@ -94,7 +95,7 @@
       },
       setTemplate: function(useTemplate, usedTemplate, theTemplates, card) {
         if (useTemplate) {
-          this.card.output = theTemplates[useTemplate].output
+          this.card.cardType = theTemplates[useTemplate].cardType
           return this.card.input = theTemplates[useTemplate].input
         } else if (card.output) {
           if (usedTemplate) {
