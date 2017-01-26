@@ -107,7 +107,7 @@
         if (card) {
           this.async(this.getUpdateValues, 100) // let it load
         } else {
-          card = {}
+          this.card = {}
           var inputForm = this.$$("#cardInputs")
           var items = inputForm.querySelectorAll("[label]")
           for (var i=0, max=items.length; i < max; i++) {
