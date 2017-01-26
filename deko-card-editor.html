@@ -75,7 +75,7 @@
           }
         },
         theTemplate: {
-          computed: "setTemplate(useTemplate, usedTemplate, theTemplates, card)"
+          computed: "setTemplate(useTemplate, usedTemplate, theTemplates)"
         }
       },
       getInputFrom: function(form) {
@@ -94,6 +94,9 @@
         }, "")
       },
       setTemplate: function(useTemplate, usedTemplate, theTemplates) {
+        if (!this.card){
+          this.card = {}
+        }
         if (useTemplate) {
           this.card.cardType = theTemplates[useTemplate].cardType
           return this.card.input = theTemplates[useTemplate].input
