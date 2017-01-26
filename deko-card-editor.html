@@ -21,7 +21,13 @@
       paper-button-group {
         margin: 15px
       }
+      paper-fab {
+        position: fixed;
+        right: 25px;
+        bottom: 30px;          
+      }
     </style>
+    <paper-fab icon="add" on-tap="add"></paper-fab>
     <paper-dialog id="dialog" modal>
       <paper-dialog-scrollable>
         <paper-button-group selected="{{useTemplate}}">
@@ -108,10 +114,15 @@
         }
       },
       save: function() {
+        if (!this.card){
+          this.card = {}
+        }
         var inputForm = this.$$("#cardInputs")
         var items = inputForm.querySelectorAll("[label]")
         for (var i=0, max=items.length; i < max; i++) {
-          this.card[items[i].label] = items[i].value
+          if (items[i].value) {
+            this.card[items[i].label] = items[i].value
+          }
         }
         this.close('save')
       },
@@ -130,6 +141,9 @@
         }
         this.fire('close', detail, { bubbles: false })
         this.$.dialog.close()
+      },
+      add: function() {
+        this.open({})
       },
       open: function(card) {
         if (card) {
