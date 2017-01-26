@@ -108,7 +108,9 @@
           var inputForm = this.$$("#cardInputs")
           var items = inputForm.querySelectorAll("[label]")
           for (var i=0, max=items.length; i < max; i++) {
-            items[i].value = this.card[items[i].label]
+            if (this.card.hasOwnProperty(items[i].label)) {
+              items[i].value = this.card[items[i].label]
+            }
           }
           return "Done"
         }
