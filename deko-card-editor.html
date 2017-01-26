@@ -82,7 +82,7 @@
         return form
       },
       getUsedTemplate: function(theTemplates, card) {
-        return this.objectToArray(theTemplates)[0]
+        return this.objectToArray(theTemplates)[0]["$key"]
         // rem \/
         return this.objectToArray(theTemplates).reduce(function(previousValue, currentValue){
           if (currentValue.output == card.output) {
