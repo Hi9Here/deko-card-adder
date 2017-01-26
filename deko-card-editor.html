@@ -82,13 +82,15 @@
         return form
       },
       getUsedTemplate: function(theTemplates, card) {
-         return this.objectToArray(theTemplates).reduce(function(previousValue, currentValue){
-           if (currentValue.output == card.output) {
-             return currentValue["$key"]
-           } else {
-             return previousValue
-           }
-         }, "")
+        return this.objectToArray(theTemplates)[0]
+        // rem \/
+        return this.objectToArray(theTemplates).reduce(function(previousValue, currentValue){
+          if (currentValue.output == card.output) {
+            return currentValue["$key"]
+          } else {
+            return previousValue
+          }
+        }, "")
       },
       setTemplate: function(useTemplate, usedTemplate, theTemplates, card) {
         if (useTemplate) {
