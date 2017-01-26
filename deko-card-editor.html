@@ -93,14 +93,11 @@
           }
         }, "")
       },
-      setTemplate: function(useTemplate, usedTemplate, theTemplates, card) {
+      setTemplate: function(useTemplate, usedTemplate, theTemplates,) {
         if (useTemplate) {
           this.card.cardType = theTemplates[useTemplate].cardType
           return this.card.input = theTemplates[useTemplate].input
-        } else if (card.output) {
-          if (usedTemplate) {
-            this.useTemplate = usedTemplate
-          }
+        } else if (this.card.input) {
           return this.card.input
         }
       },
