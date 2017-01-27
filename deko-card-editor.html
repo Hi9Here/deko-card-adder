@@ -159,6 +159,7 @@
           this.card.image = this.card.cardicon + ""
           delete(this.card.cardicon)
         }
+        this.async(this.getUpdateValues, 100)
         this.$.dialog.open()
       },
       objectToArray: function(data) { //rewrite as .map
