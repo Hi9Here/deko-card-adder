@@ -68,8 +68,7 @@
         theTemplates: {
           value:{
             link: {
-              fetch: "<card-info-link-input label=\"link\"></card-info-link-input>",
-              input: "<paper-input label=\"link\"><\/paper-input>\r\n<input-image label=\"image\" width=\"100\" max-height=\"100\" ><\/input-image><paper-input label=\"title\"><\/paper-input><paper-input label=\"desc\"><\/paper-input>", 
+              input: "<card-info-link-input label=\"link\"></card-info-link-input>", 
               icon: "bookmark",
               cardType: "link-display",
             },
@@ -84,7 +83,7 @@
         return form
       },
       getUsedTemplate: function(theTemplates, card) {
-        return this.objectToArray(theTemplates)[0]["$key"]
+        return this.objectToArray(theTemplates)[0]["__key"]
         // rem \/
         return this.objectToArray(theTemplates).reduce(function(previousValue, currentValue){
           if (currentValue.output == card.output) {
