@@ -68,6 +68,7 @@
         theTemplates: {
           value:{
             link: {
+              fetch: "<card-info-link-input label=\"link\"></card-info-link-input>",
               input: "<paper-input label=\"link\"><\/paper-input>\r\n<input-image label=\"image\" width=\"100\" max-height=\"100\" ><\/input-image><paper-input label=\"title\"><\/paper-input><paper-input label=\"desc\"><\/paper-input>", 
               icon: "bookmark",
               cardType: "link-display",
@@ -168,7 +169,7 @@
           var keys = Object.keys(data)
           for (var i = 0; i < keys.length; i++) {
             if (typeof data[keys[i]] === 'object') {
-              data[keys[i]]["$key"] = keys[i]
+              data[keys[i]]["__key"] = keys[i]
               output.push(data[keys[i]])
             }
           }
