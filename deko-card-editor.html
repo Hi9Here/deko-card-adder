@@ -157,10 +157,6 @@
         if (card) {
           this.card = card
         }
-        if (this.card.cardicon) {
-          this.card.image = this.card.cardicon + ""
-          delete(this.card.cardicon)
-        }
         this.async(this.getUpdateValues, 100)
         this.$.dialog.open()
       },
