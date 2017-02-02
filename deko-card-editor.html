@@ -151,10 +151,16 @@
         this.fire('close', detail, { bubbles: false })
         this.$.dialog.close()
       },
+      resetForm: function() {
+        this.set("inputFrom","")
+        this.set("inputFrom",this.getInputFrom(this.theTemplate))
+      },
       add: function() {
+        this.resetForm()
         this.open({})
       },
       open: function(card) {
+        this.resetForm()
         if (card) {
           this.card = card
         }
