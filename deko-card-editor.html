@@ -69,7 +69,7 @@
         theTemplates: {
           value:{
             link: {
-              input: "<paper-input label=\"title\"></paper-input><card-info-link-input label=\"link\"></card-info-link-input>", 
+              input: "<card-info-link-input label=\"link\"></card-info-link-input>", 
               icon: "bookmark",
               cardType: "link-display",
             },
@@ -133,7 +133,6 @@
             this.card[items[i].label] = items[i].value
           }
         }
-        console.log(this.card)
         this.close('save')
       },
       delete: function() {
