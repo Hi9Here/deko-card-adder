@@ -16,5 +16,9 @@
     "paper-dialog-scrollable": "*",
     "paper-dialog": "PolymerElements/paper-dialog#84ae0a9ddd",
     "card-info-link-input": "marcus7777/card-info-link-input"
+  },
+  "devDependencies": {
+    "iron-test-helpers": "*",
+    "web-component-tester": "^5.0.0"
   }
 }
