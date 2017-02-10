@@ -104,6 +104,9 @@
           this.card = {}
         }
         if (useTemplates) {
+          if (typeof useTemplates === "string") {
+            useTemplates = JSON.parse(useTemplates)
+          }
           this.card.cardType = useTemplates[useTemplate].cardType
           return this.card.input = useTemplates[useTemplate].input
         } else if (useTemplate) {
