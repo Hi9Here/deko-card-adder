@@ -62,8 +62,7 @@
           computed: "getUsedTemplate(theTemplates, card, useTemplates)"
         },
         useTemplates: {
-          type: Object,
-          value: false
+          type: Object
         },
         useTemplate: {
           value:"link"
@@ -78,7 +77,7 @@
           }
         },
         theTemplate: {
-          computed: "setTemplate(useTemplate, usedTemplate, theTemplates)"
+          computed: "setTemplate(useTemplate, usedTemplate, theTemplates, useTemplates)"
         }
       },
       getInputFrom: function(form) {
