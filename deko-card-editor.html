@@ -85,9 +85,12 @@
         return form
       },
       getUsedTemplate: function(theTemplates, card, useTemplates) {
-        if (useTemplates) {
+        if (!useTemplates) {
           return this.objectToArray(theTemplates)[0]["__key"]
         } else {
+          if (typeof useTemplates === "string") {
+            useTemplates = JSON.parse(useTemplates)
+          }
           return this.objectToArray(useTemplates)[0]["__key"]
         }
         // rem \/
