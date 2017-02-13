@@ -140,6 +140,9 @@
         if (!this.card){
           this.card = {}
         }
+        if (this.card.cardIcon) {
+          delete(this.card.cardIcon)
+        }
         var inputForm = this.$$("#cardInputs")
         var items = inputForm.querySelectorAll("[label]")
         for (var i=0, max=items.length; i < max; i++) {
