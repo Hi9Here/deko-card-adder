@@ -30,9 +30,8 @@
       }
     </style>
     <template is="dom-if" if="[[!noAdd]]">
-  
+      <paper-fab icon="add" on-tap="add"></paper-fab>
     </template>
-    <paper-fab icon="add" on-tap="add"></paper-fab>
     <paper-dialog id="dialog" modal>
       <paper-dialog-scrollable>
         <paper-button-group selected="{{useTemplate}}">
