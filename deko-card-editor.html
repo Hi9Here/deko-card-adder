@@ -29,6 +29,9 @@
         bottom: 30px;          
       }
     </style>
+    <template is="dom-if" if="[[!noAdd]]">
+  
+    </template>
     <paper-fab icon="add" on-tap="add"></paper-fab>
     <paper-dialog id="dialog" modal>
       <paper-dialog-scrollable>
@@ -60,6 +63,10 @@
         },
         usedTemplate: {
           computed: "getUsedTemplate(theTemplates, card, useTemplates)"
+        },
+        noAdd:{
+          type:Boolean,
+          value:false,
         },
         useTemplates: {
           type: Object
