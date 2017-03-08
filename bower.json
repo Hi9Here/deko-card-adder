@@ -15,7 +15,8 @@
     "paper-button-group": "Protoss78/paper-button-group#~0.0.1",
     "paper-dialog-scrollable": "*",
     "paper-dialog": "PolymerElements/paper-dialog",
-    "card-info-link-input": "marcus7777/card-info-link-input"
+    "card-info-link-input": "marcus7777/card-info-link-input",
+    "content-card": "marcus7777/content-card"
   },
   "devDependencies": {
     "iron-test-helpers": "*",
