@@ -62,7 +62,7 @@
           computed: ("getUpdateValues(card.*)")
         },
         usedTemplate: {
-          computed: "getUsedTemplate(theTemplates, card, useTemplates)"
+          computed: "getUsedTemplate(theTemplates, card, useTemplates, useTemplate)"
         },
         noAdd:{
           type:Boolean,
@@ -97,9 +97,9 @@
         this.async(this.getUpdateValues, 100) // let it load
         return form
       },
-      getUsedTemplate: function(theTemplates, card, useTemplates) {
+      getUsedTemplate: function(theTemplates, card, useTemplates, useTemplate) {
         if (!useTemplates) {
-          return this.objectToArray(theTemplates)[0]["__key"]
+          return this.objectToArray(theTemplates)[useTemplate]["__key"]
         } else {
           if (typeof useTemplates === "string") {
             useTemplates = JSON.parse(useTemplates)
