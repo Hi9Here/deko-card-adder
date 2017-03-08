@@ -99,7 +99,7 @@
       },
       getUsedTemplate: function(theTemplates, card, useTemplates, useTemplate) {
         if (!useTemplates) {
-          return this.objectToArray(theTemplates)[useTemplate]["__key"]
+          return theTemplates[useTemplate]
         } else {
           if (typeof useTemplates === "string") {
             useTemplates = JSON.parse(useTemplates)
