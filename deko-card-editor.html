@@ -52,10 +52,6 @@
     Polymer({
       is: 'deko-card-editor',
       properties: {
-        adding:{
-          type:Boolean,
-          value:false,
-        },
         card: {
           type: Object,
           notify: true,
@@ -101,7 +97,6 @@
         }
       },
       addThis: function(e,d) {
-        this.adding = true
         console.log(e,d)
         console.log(e.target.localName)
       },
