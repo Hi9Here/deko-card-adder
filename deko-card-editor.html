@@ -35,12 +35,7 @@
     </template>
     <paper-dialog id="dialog" modal>
       <paper-dialog-scrollable>
-        <paper-button-group selected="{{useTemplate}}">
-          <template is="dom-repeat" items="{{objectToArray(theTemplates)}}">
-            <paper-button name="{{item.$key}}" raised><iron-icon icon="{{item.icon}}"></iron-icon></paper-button>
-          </template>
-        </paper-button-group>
-        <div id="cardInputs" inner-h-t-m-l="[[inputFrom]]"></div>
+        <deko-cards cards="[[objectToArray(theTemplates)]]" no-add on-add="addthis" ></deko-cards>
       </paper-dialog-scrollable>
       <div class="buttons">
         <paper-button on-tap="delete" style="color: #333;">Delete</paper-button>
@@ -78,11 +73,13 @@
         theTemplates: {
           value:{
             link: {
+              title:"link",
               input: "<card-info-link-input label=\"link\"></card-info-link-input>", 
               icon: "bookmark",
               cardType: "link-display",
             },
             content: {
+              title:"content",
               input: "<paper-input label=\"title\"></paper-input><paper-input label=\"desc\"></paper-input><image-input label=\"image\"></image-input>", 
               icon: "chrome-reader-mode",
               cardType: "content-card",
