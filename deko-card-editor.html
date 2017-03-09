@@ -38,7 +38,7 @@
       <paper-dialog-scrollable>
         <template is="dom-if" if="[[!adding]]">
           <template is="dom-repeat" items="[[objectToArray(theTemplates)]]">
-            <deko-card card="[[item]]" icon="[[item.icon]]" no-add on-tap="addthis([[item.cardType]])" ></deko-card>
+            <deko-card card="[[item]]" icon="[[item.icon]]" no-add on-tap="addThis([[item.cardType]])" ></deko-card>
           </template>
         </template>
         <template is="dom-if" if="[[adding]]">
@@ -103,7 +103,7 @@
         }
       },
       addThis: function(e,d,a,b,c) {
-        
+        this.adding = true
         console.log(e,d,a,b,c)
       },
       getInputFrom: function(form) {
