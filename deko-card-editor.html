@@ -38,7 +38,7 @@
       <paper-dialog-scrollable>
         <template is="dom-if" if="[[!adding]]">
           <template is="dom-repeat" items="[[objectToArray(theTemplates)]]">
-            <deko-card card="[[item]]" icon="[[item.icon]]" on-tap="addThis" ></deko-card>
+            <deko-card card="[[item]]" icon="[[item.icon]]" on-tap="addThis"></deko-card>
           </template>
         </template>
         <template is="dom-if" if="[[adding]]">
@@ -102,9 +102,10 @@
           computed: "setTemplate(useTemplate, usedTemplate, theTemplates, useTemplates)"
         }
       },
-      addThis: function(e,d,a,b,c) {
+      addThis: function(e,d) {
         this.adding = true
-        console.log(e,d,a,b,c)
+        console.log(e,d)
+        console.log(e.target.localName)
       },
       getInputFrom: function(form) {
         this.async(this.getUpdateValues, 100) // let it load
