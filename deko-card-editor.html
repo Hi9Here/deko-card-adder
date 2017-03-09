@@ -36,8 +36,13 @@
     </template>
     <paper-dialog id="dialog" modal>
       <paper-dialog-scrollable>
-        <template is="dom-repeat" items="[[objectToArray(theTemplates)]]">
-          <deko-card card="[[item]]" icon="[[item.icon]]" no-add on-tap="addthis" ></deko-card>
+        <template is="dom-if" if="[[!adding]]">
+          <template is="dom-repeat" items="[[objectToArray(theTemplates)]]">
+            <deko-card card="[[item]]" icon="[[item.icon]]" no-add on-tap="addthis([[item.cardType]])" ></deko-card>
+          </template>
+        </template>
+        <template is="dom-if" if="[[adding]]">
+          <div id="cardInputs" inner-h-t-m-l="[[inputFrom]]"></div>
         </template>
       </paper-dialog-scrollable>
       <div class="buttons">
@@ -51,6 +56,10 @@
     Polymer({
       is: 'deko-card-editor',
       properties: {
+        adding:{
+          type:Boolean,
+          value:false,
+        },
         card: {
           type: Object,
           notify: true,
@@ -92,6 +101,10 @@
         theTemplate: {
           computed: "setTemplate(useTemplate, usedTemplate, theTemplates, useTemplates)"
         }
+      },
+      addThis: function(e,d,a,b,c) {
+        
+        console.log(e,d,a,b,c)
       },
       getInputFrom: function(form) {
         this.async(this.getUpdateValues, 100) // let it load
