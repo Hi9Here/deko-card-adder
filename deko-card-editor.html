@@ -36,7 +36,9 @@
     </template>
     <paper-dialog id="dialog" modal>
       <paper-dialog-scrollable>
-        <deko-cards cards="[[objectToArray(theTemplates)]]" no-add on-add="addthis" ></deko-cards>
+        <template is="dom-repeat" items="[[objectToArray(theTemplates)]]">
+          <deko-card card="[[item]]" no-add on-tap="addthis" ></deko-card>
+        </template>
       </paper-dialog-scrollable>
       <div class="buttons">
         <paper-button on-tap="delete" style="color: #333;">Delete</paper-button>
