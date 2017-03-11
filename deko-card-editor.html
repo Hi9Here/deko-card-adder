@@ -42,9 +42,9 @@
         <div id="cardInputs" inner-h-t-m-l="[[inputFrom]]"></div>
       </paper-dialog-scrollable>
       <div class="buttons">
-        <paper-button on-tap="delete" style="color: #333;">Delete</paper-button>
+        <paper-button on-tap="delete" style="color:#333">Delete</paper-button>
         <paper-button dialog-dismiss>Cancel</paper-button>
-        <paper-button on-tap="save" raised style="background: #ff4081; color: #fff;">Save</paper-button>
+        <paper-button on-tap="save" raised style="background:#ff4081;color:#fff">Save</paper-button>
       </div>
     </paper-dialog>
   </template>
@@ -56,7 +56,10 @@
           type: Object,
           notify: true,
         },
-        inputFrom:String,
+        inputFrom:{
+          type:String,
+          computed: ("usedTemplate.input")
+        },
         updateValues: {
           computed: ("getUpdateValues(card.*)")
         },
@@ -72,18 +75,18 @@
           value: ""
         },
         useTemplate: {
-          value:"link"
+          value: "link-display"
         },
         theTemplates: {
           value:{
-            link: {
+            "link-display": {
               title:"link",
               input: "<card-info-link-input label=\"link\"></card-info-link-input>", 
               icon: "bookmark",
               locked: "true",
               cardType: "link-display",
             },
-            content: {
+            "content-card": {
               title:"content",
               input: "<paper-input label=\"title\"></paper-input><paper-input label=\"desc\"></paper-input><image-input label=\"image\"></image-input>", 
               icon: "chrome-reader-mode",
@@ -98,7 +101,9 @@
       },
       addThis: function(e,d) {
         console.log(e,d)
-        console.log(e.target.localName)
+        if (d) {
+          this.useTemplate = d
+        }
       },
       getInputFrom: function(form) {
         this.async(this.getUpdateValues, 100) // let it load
