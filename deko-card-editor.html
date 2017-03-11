@@ -57,8 +57,7 @@
           notify: true,
         },
         inputFrom:{
-          type:String,
-          computed: ("usedTemplate.input")
+          computed: ("getThis(usedTemplate.input)"),
         },
         updateValues: {
           computed: ("getUpdateValues(card.*)")
@@ -98,6 +97,10 @@
         theTemplate: {
           computed: "setTemplate(useTemplate, usedTemplate, theTemplates, useTemplates)"
         }
+      },
+      getThis: function(inputForm) {
+        this.async(this.getUpdateValues, 100) // let it load
+        return inputForm
       },
       addThis: function(e,d) {
         console.log(e,d)
