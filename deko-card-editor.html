@@ -37,7 +37,7 @@
     <paper-dialog id="dialog" modal>
       <paper-dialog-scrollable>
         <template is="dom-repeat" items="[[objectToArray(theTemplates)]]">
-          <deko-card card="[[item]]" icon="[[item.icon]]" on-tap="addThis"></deko-card>
+          <deko-card card="[[item]]" icon="[[item.icon]]" on-open="addThis"></deko-card>
         </template>
         <div id="cardInputs" inner-h-t-m-l="[[inputFrom]]"></div>
       </paper-dialog-scrollable>
