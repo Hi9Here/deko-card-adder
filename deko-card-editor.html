@@ -36,10 +36,14 @@
     </template>
     <paper-dialog id="dialog" modal>
       <paper-dialog-scrollable>
-        <template is="dom-repeat" items="[[objectToArray(theTemplates)]]">
-          <deko-card card="[[item]]" icon="[[item.icon]]" on-open="addThis"></deko-card>
+        <template is="dom-if" if="[[!card.cardType]]">
+          <template is="dom-repeat" items="[[objectToArray(theTemplates)]]">
+            <deko-card card="[[item]]" icon="[[item.icon]]" on-open="addThis"></deko-card>
+          </template>
         </template>
-        <div id="cardInputs" inner-h-t-m-l="[[inputFrom]]"></div>
+        <template is="dom-if" if="[[card.cardType]]">
+          <div id="cardInputs" inner-h-t-m-l="[[inputFrom]]"></div>
+        </template>
       </paper-dialog-scrollable>
       <div class="buttons">
         <paper-button on-tap="delete" style="color:#333">Delete</paper-button>
