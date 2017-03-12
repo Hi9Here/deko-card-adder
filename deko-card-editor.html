@@ -56,7 +56,7 @@
     Polymer({
       is: 'deko-card-editor',
       properties: {
-        card: {
+        card:{
           type: Object,
           notify: true,
         },
@@ -87,14 +87,14 @@
         theTemplates: {
           value:{
             "link-display": {
-              title:"link",
+              title: "link",
               input: "<card-info-link-input label=\"link\"></card-info-link-input>", 
               icon: "bookmark",
               locked: "true",
               cardType: "link-display",
             },
             "content-card": {
-              title:"content",
+              title: "content",
               input: "<paper-input label=\"title\"></paper-input><paper-input label=\"desc\"></paper-input><image-input label=\"image\"></image-input>", 
               icon: "chrome-reader-mode",
               cardType: "content-card",
@@ -217,6 +217,7 @@
           }
           this.card = card
         } else {
+          
           this.pickType = true
         }
         this.async(this.getUpdateValues, 100)
