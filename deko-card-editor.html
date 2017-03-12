@@ -206,15 +206,18 @@
         this.$.dialog.close()
       },
       add: function() {
-        this.pickType = true
-        this.open({})
+        this.open()
       },
       open: function(card) {
         if (card) {
           if (this.theTemplates[card.cardType]) {
             this.theTemplates = card.cardType
+          } else {
+            this.pickType = true
           }
           this.card = card
+        } else {
+          this.pickType = true
         }
         this.async(this.getUpdateValues, 100)
         this.$.dialog.open()
