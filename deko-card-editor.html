@@ -211,6 +211,9 @@
       },
       open: function(card) {
         if (card) {
+          if (this.theTemplates[card.cardType]) {
+            this.theTemplates = card.cardType
+          }
           this.card = card
         }
         this.async(this.getUpdateValues, 100)
