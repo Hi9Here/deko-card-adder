@@ -36,12 +36,12 @@
     </template>
     <paper-dialog id="dialog" modal>
       <paper-dialog-scrollable>
-        <template is="dom-if" if="[[!card.cardType]]">
+        <template is="dom-if" if="[[pickType]]">
           <template is="dom-repeat" items="[[objectToArray(theTemplates)]]">
             <deko-card card="[[item]]" icon="[[item.icon]]" on-open="addThis"></deko-card>
           </template>
         </template>
-        <template is="dom-if" if="[[card.cardType]]">
+        <template is="dom-if" if="[[!pickType]]">
           <div id="cardInputs" inner-h-t-m-l="[[inputFrom]]"></div>
         </template>
       </paper-dialog-scrollable>
@@ -70,6 +70,10 @@
           computed: "getUsedTemplate(theTemplates, card, useTemplates, useTemplate)"
         },
         noAdd:{
+          type:Boolean,
+          value:false,
+        },
+        pickType:{
           type:Boolean,
           value:false,
         },
@@ -110,6 +114,7 @@
         console.log(e,d)
         if (d) {
           this.useTemplate = d
+          this.pickType = false
         }
       },
       getInputFrom: function(form) {
@@ -201,7 +206,7 @@
         this.$.dialog.close()
       },
       add: function() {
-        this.adding = false
+        this.pickType = true
         this.open({})
       },
       open: function(card) {
