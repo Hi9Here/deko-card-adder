@@ -211,7 +211,7 @@
       open: function(card) {
         if (card) {
           if (this.theTemplates[card.cardType]) {
-            this.theTemplates = card.cardType
+            this.useTemplate = card.cardType
           } else {
             this.pickType = true
           }
