@@ -113,7 +113,6 @@
         return inputForm
       },
       addThis: function(e,d) {
-        console.log(e,d)
         if (d) {
           this.useTemplate = d
           this.pickType = false
@@ -149,6 +148,7 @@
           if (typeof useTemplates === "string") {
             useTemplates = JSON.parse(useTemplates)
           }
+          this.card.icon = useTemplates[useTemplate].icon
           this.card.cardType = useTemplates[useTemplate].cardType
           return this.card.input = useTemplates[useTemplate].input
         } else if (useTemplate) {
