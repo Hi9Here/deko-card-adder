@@ -143,6 +143,10 @@
       setTemplate: function(useTemplate, usedTemplate, theTemplates, useTemplates) {
         if (!this.card){
           this.card = {}
+        } else {
+          if (this.card.cardType) {
+            useTemplate = this.card.cardType
+          }
         }
         if (useTemplates) {
           if (typeof useTemplates === "string") {
