@@ -194,6 +194,8 @@
             this.card[items[i].label] = items[i].value
           }
         }
+        this.card.icon = this.useTemplates[this.useTemplate].icon
+        this.card.cardType = this.useTemplates[this.useTemplate].cardType
         this.close('save')
       },
       delete: function() {
