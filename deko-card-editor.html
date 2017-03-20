@@ -194,11 +194,8 @@
             this.card[items[i].label] = items[i].value
           }
         }
-        if (this.theTemplate.icon) {
+        if (this.theTemplates[this.card.cardType].icon) {
           this.card.icon = this.theTemplate.icon
-        }
-        if (this.theTemplate.cardType) {
-          this.card.cardType = this.theTemplate.cardType
         }
         this.close('save')
       },
