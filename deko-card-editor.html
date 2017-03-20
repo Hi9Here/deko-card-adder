@@ -178,7 +178,7 @@
       },
       save: function() {
         if (!this.card){
-          this.card = {}
+          this.card = this.usedTemplate
         }
         if (this.card.cardIcon) {
           delete(this.card.cardIcon)
