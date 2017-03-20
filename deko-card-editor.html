@@ -194,8 +194,12 @@
             this.card[items[i].label] = items[i].value
           }
         }
-        this.card.icon = this.useTemplates[this.useTemplate].icon
-        this.card.cardType = this.useTemplates[this.useTemplate].cardType
+        if (this.theTemplate.icon) {
+          this.card.icon = this.theTemplate.icon
+        }
+        if (this.theTemplate.cardType) {
+          this.card.cardType = this.theTemplate.cardType
+        }
         this.close('save')
       },
       delete: function() {
