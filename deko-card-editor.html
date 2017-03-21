@@ -157,7 +157,7 @@
           return this.card.input = useTemplates[useTemplate].input
         } else if (useTemplate) {
           this.card.icon = theTemplates[useTemplate].icon
-          this.card.cardType = theTemplates[useTemplate].cardType
+          this.card.cardType = useTemplate
           return this.card.input = theTemplates[useTemplate].input
         } else if (this.card.input) {
           return this.card.input
