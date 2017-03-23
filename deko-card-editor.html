@@ -194,7 +194,7 @@
             this.card[items[i].label] = items[i].value
           }
         }
-        if (this.theTemplates[this.card.cardType].icon) {
+        if (this.card.cardType && this.theTemplates[this.card.cardType] && this.theTemplates[this.card.cardType].icon) {
           this.card.icon = this.theTemplate.icon
         }
         this.close('save')
