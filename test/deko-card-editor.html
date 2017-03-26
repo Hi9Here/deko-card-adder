@@ -13,37 +13,23 @@
   <body>
     <test-fixture id="dekoCardEditor">
       <template>
-        <deko-card-editor></deko-card-editor> //TODO add attributes
+        <deko-card-editor></deko-card-editor>
       </template>
     </test-fixture>
     <script>
       suite('<deko-card-editor>', function () {
-        var dekoCardEditor;
+        var deko;
         setup(function () {
-          dekoCardEditor = fixture('dekoCardEditor');
+          deko = fixture('dekoCardEditor');
         });
-        teardown(function () {
-          //...
+
+       suite('deko-app tests', function() {
+
+          test('instantiating the element works', function() {
+            assert.equal(deko.is, 'deko-card-editor');
+          });
+
         });
-        suite("This test is just to show that tests are running", function () {
-          test("test is running", function(done) {
-            done()
-          })
-        })
-        suite('These test allow you to interact with the element', function () {
-          test('can be triggered with space', function(done) {
-            dekoCardEditor.addEventListener('keydown', function() {
-              done()
-            })
-            MockInteractions.pressSpace(dekoCardEditor)
-          })
-          test('can be clicked', function(done) {
-            dekoCardEditor.addEventListener('click', function() {
-              done()
-            })
-            MockInteractions.tap(dekoCardEditor)
-          })
-        })
       })
     </script>
   </body>
