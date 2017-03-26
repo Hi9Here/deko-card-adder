@@ -17,7 +17,8 @@
     "paper-dialog": "PolymerElements/paper-dialog",
     "card-info-link-input": "marcus7777/card-info-link-input",
     "content-card": "marcus7777/content-card",
-    "iron-component-page": "PolymerElements/iron-component-page#^1.1.8"
+    "iron-component-page": "PolymerElements/iron-component-page#^1.1.8",
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.2.5"
   },
   "devDependencies": {
     "iron-test-helpers": "*",
