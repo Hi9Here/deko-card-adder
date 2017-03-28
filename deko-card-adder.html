@@ -43,7 +43,7 @@
       }
     </style>
     <template is="dom-if" if="[[!noAdd]]">
-      <paper-fab icon="add" on-tap="add"></paper-fab>
+      <paper-fab icon="add" on-tap="open"></paper-fab>
     </template>
     <paper-dialog id="dialog" modal>
       <paper-dialog-scrollable>
@@ -226,22 +226,9 @@
         this.fire('close', detail, { bubbles: false })
         this.$.dialog.close()
       },
-      add: function() {
-        this.open()
-      },
-      open: function(card) {
-        if (card) {
-          if (this.theTemplates[card.cardType]) {
-            this.useTemplate = card.cardType
-          } else {
-            this.pickType = true
-          }
-          this.card = card
-        } else {
-          this.card = {}
-          this.pickType = true
-        }
-        this.async(this.getUpdateValues, 100)
+      open: function() {
+        this.card = {}
+        this.pickType = true
         this.$.dialog.open()
       },
       objectToArray: function(data) { //rewrite as .map
