@@ -9,6 +9,7 @@
   ],
   "dependencies": {
     "input-image": "*",
+    "card-meta-edit": "Hi9Here/card-meta-edit",
     "iron-icon": "PolymerElements/iron-icon",
     "paper-button": "PolymerElements/paper-button#~1.0.14",
     "paper-fab": "PolymerElements/paper-fab",
