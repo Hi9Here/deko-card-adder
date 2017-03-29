@@ -117,19 +117,11 @@
           computed: "setTemplate(useTemplate, usedTemplate, theTemplates, useTemplates)"
         }
       },
-      getThis: function(inputForm) {
-        this.async(this.getUpdateValues, 100) // let it load
-        return inputForm
-      },
       addThis: function(e,d) {
         if (d) {
           this.useTemplate = d
           this.pickType = false
         }
-      },
-      getInputFrom: function(form) {
-        this.async(this.getUpdateValues, 100) // let it load
-        return form
       },
       getUsedTemplate: function(theTemplates, card, useTemplates, useTemplate) {
         if (!useTemplates) {
