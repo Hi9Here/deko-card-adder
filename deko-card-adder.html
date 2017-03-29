@@ -175,37 +175,14 @@
         }
       },
       save: function() {
-        if (!this.card){
-          this.card = this.usedTemplate
-        }
-        if (this.card.cardIcon) {
-          delete(this.card.cardIcon)
-        }
-        var inputForm = this.$$("#cardInputs")
-        var items = inputForm.querySelectorAll("[label]")
-        for (var i=0, max=items.length; i < max; i++) {
-          if (items[i].value) {
-            this.card[items[i].label] = items[i].value
-          }
-        }
-        if (this.card.cardType && this.theTemplates[this.card.cardType] && this.theTemplates[this.card.cardType].icon) {
-          this.card.icon = this.theTemplate.icon
-        }
+        this.card.cardType = this.usedTemplate.cardType
+        this.card.icon = this.theTemplate.icon
         this.close('save')
       },
       delete: function() {
         this.close('delete')
       },
       close: function(detail) {
-        var inputForm = this.$$("#cardInputs")
-        var items = inputForm.querySelectorAll("[label]")
-        for (var i=0, max=items.length; i < max; i++) {
-          this.card[items[i].label] = items[i].value
-        }
-        if (this.__editedCardElement) {
-          this.__editedCardElement.style.opacity = 1
-          this.__editedCardElement = null
-        }
         this.fire('close', detail, { bubbles: false })
         this.$.dialog.close()
       },
