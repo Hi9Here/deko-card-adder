@@ -167,7 +167,15 @@
       save: function() {
         this.card.cardType = this.usedTemplate.cardType
         this.card.icon = this.usedTemplate.icon
-        this.card.uid = this.userUid
+        // permissions
+        this.card.readable = {}
+        this.card.writable = {}
+        this.card.readable[this.userUid] = true
+        this.card.readable.all = true // default
+        
+        this.card.writable[this.userUid] = true
+        this.card.writable.all = false // default
+        
         this.close('save')
       },
       delete: function() {
