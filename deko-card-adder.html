@@ -17,10 +17,7 @@
 
 <!--
   `deko-card`
-
-
-
-  @demo demo/index.html
+  @demo
 -->
 
 <dom-module id="deko-card-adder">
@@ -170,6 +167,7 @@
       save: function() {
         this.card.cardType = this.usedTemplate.cardType
         this.card.icon = this.usedTemplate.icon
+        this.card.uid = this.userUid
         this.close('save')
       },
       delete: function() {
@@ -182,6 +180,9 @@
       open: function() {
         this.card = {}
         this.pickType = true
+        if (firebase) {
+          this.userUid = firebase.auth().currentUser.uid
+        }
         this.$.dialog.open()
       },
       objectToArray: function(data) { //rewrite as .map
