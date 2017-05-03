@@ -89,6 +89,13 @@
           type: Object,
           value: ""
         },
+        addOneTo:{
+          type:Boolean,
+          value:false,
+        },
+        _addOne: {
+          computed: "_addOneToDeck(addOneTo,deck)"
+        },
         useTemplate: {
           value: "link-display"
         },
@@ -112,6 +119,12 @@
         },
         theTemplate: {
           computed: "setTemplate(useTemplate, usedTemplate, theTemplates, useTemplates)"
+        }
+      },
+      _addOneToDeck(addOneTo, deck) {
+        if (addOneTo && deck) {
+          this.open()
+          this.addOneTo = false
         }
       },
       addThis: function(e,d) {
