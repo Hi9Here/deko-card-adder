@@ -44,7 +44,7 @@
     </template>
     <paper-dialog id="dialog" modal>
       <paper-dialog-scrollable>
-        <card-meta-edit title="{{card.title}}" desc="{{card.desc}}" image="{{card.image}}" ></card-meta-edit>
+        <card-meta-edit title="{{card.title}}" desc="{{card.desc}}" image="{{card.image}}"  bigImage="{{card.bigImage}}" ></card-meta-edit>
       </paper-dialog-scrollable>
       <div class="buttons">
         <template is="dom-if" if="[[card.title]]">
