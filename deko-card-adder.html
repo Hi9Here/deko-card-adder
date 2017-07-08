@@ -44,14 +44,7 @@
     </template>
     <paper-dialog id="dialog" modal>
       <paper-dialog-scrollable>
-        <template is="dom-if" if="[[pickType]]">
-          <template is="dom-repeat" items="[[objectToArray(theTemplates)]]">
-            <deko-card card="[[item]]" icon="[[item.icon]]" on-open="addThis"></deko-card>
-          </template>
-        </template>
-        <template is="dom-if" if="[[!pickType]]">
-          <card-meta-edit title="{{card.title}}" desc="{{card.desc}}" image="{{card.image}}" ></card-meta-edit>
-        </template>
+        <card-meta-edit title="{{card.title}}" desc="{{card.desc}}" image="{{card.image}}" ></card-meta-edit>
       </paper-dialog-scrollable>
       <div class="buttons">
         <template is="dom-if" if="[[!pickType]]">
