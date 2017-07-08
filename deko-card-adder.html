@@ -63,6 +63,12 @@
         card:{
           type: Object,
           notify: true,
+          value: {
+            title: "content",
+            icon: "chrome-reader-mode",
+            cardType: "content-card",
+            locked: "true",
+          },
         },
         usedTemplate: {
           computed: "getUsedTemplate(theTemplates, card, useTemplates, useTemplate)"
