@@ -71,10 +71,6 @@
           type:Boolean,
           value:false,
         },
-        pickType:{
-          type:Boolean,
-          value:false,
-        },
         useTemplates: {
           type: Object,
           value: ""
@@ -87,7 +83,7 @@
           computed: "_addOneToDeck(addOneTo,deck)"
         },
         useTemplate: {
-          value: "link-display"
+          value: "content-card"
         },
         theTemplates: {
           value:{
@@ -165,7 +161,7 @@
         }
       },
       save: function() {
-        this.card.cardType = this.usedTemplate.cardType
+        this.card.cardType = "content-card"//this.usedTemplate.cardType
         this.card.icon = this.usedTemplate.icon
         // permissions
         this.card.readable = {}
