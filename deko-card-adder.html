@@ -47,10 +47,8 @@
         <card-meta-edit title="{{card.title}}" desc="{{card.desc}}" image="{{card.image}}" ></card-meta-edit>
       </paper-dialog-scrollable>
       <div class="buttons">
-        <template is="dom-if" if="[[!pickType]]">
-          <template is="dom-if" if="[[card.title]]">
-            <paper-button on-tap="save" raised style="background:#ff4081;color:#fff">Add</paper-button>
-          </template>
+        <template is="dom-if" if="[[card.title]]">
+          <paper-button on-tap="save" raised style="background:#ff4081;color:#fff">Add</paper-button>
         </template>
         <paper-button dialog-dismiss>Cancel</paper-button>
       </div>
